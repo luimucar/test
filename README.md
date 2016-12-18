@@ -1,29 +1,19 @@
-# Test
+# To configurate mysql:
 
-O objetivo é criar um fomulário de cadastro e armazenar as informações digitadas no banco de dados, neste projeto, utilize o Spring Framework para o MVC e persistência de dados juntamente com o Hibernate. Após a finalização faça commit e envie o link para esdras.tavares@fiveware.com.br
+It needs a mysql database called "pets" and a table called usuario. sql creation for this table in:
+fireware-test-model/order.sql 
 
-# Dicas
+For the access configuration to db in:
+fireware-test-model/src/main/resources/META-INF/persistence.xml
 
-1 - De um fork neste projeto, clone e importe no eclipse
 
-2 - Crie 2 módulos "maven" com os seguintes nomes:
+# To execute:
 
-  - fiveware-test-service (jar)
-  - fiveware-test-web (war)
-  
-Observe que já existe um "parent" e o fiveware-test-model(jar)
+in the parent project:
+mvn clean install
 
-3 - Configure o Spring MVC no projeto web(fiveware-test-web), essa configuração deve ser SEM XML.
+in the fiveware-test-web folder:
 
-4 - Crie um formulário qualquer de cadastro que tenha no mínimo os seguintes elementos:
+mvn tomcat7:run
 
-  - Campo de texto
-  - Checkbox
-  - Combobox
-  - radio
-  
-O envio dos dados do formulário deve ser via AJAX
-
-5 - Crie o modelo de dados para este formulário no MySQL e também a entidade no módulo fiveware-test-model
-
-6 - Implemente todas as camadas, a view chamando o controller, o controller chamando o service e o service invocando o repositório.
+then access in http://localhost:8080
