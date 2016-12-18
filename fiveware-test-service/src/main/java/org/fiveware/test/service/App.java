@@ -1,4 +1,4 @@
-package org.fiveware.test.model;
+package org.fiveware.test.service;
 
 /**
  * Hello world!

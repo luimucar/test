@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
+
+import model.saveUsuario;
+
 import com.ajax.web.jsonview.Views;
 import com.ajax.web.model.AjaxResponseBody;
 import com.ajax.web.model.SearchCriteria;
@@ -18,8 +21,6 @@ import com.ajax.web.model.User;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import service.saveUsuario;
 
 @RestController
 public class AjaxController {

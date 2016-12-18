@@ -102,7 +102,7 @@
 		
    <dependency>
       <groupId>org.fiveware</groupId>
-      <artifactId>fiveware-test-model</artifactId>
+      <artifactId>fiveware-test-service</artifactId>
       <version>${project.version}</version>
     </dependency>
     
