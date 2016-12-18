@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Spring MVC 4 + Ajax Hello World</title>
+<title>Fiveware Test: Spring MVC + Ajax + Hibernate + mysql</title>
 
 <c:url var="home" value="/" scope="request" />
 
@@ -22,7 +22,7 @@
 <nav class="navbar navbar-inverse">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Spring 4 MVC Ajax Hello World</a>
+			<a class="navbar-brand" href="#">Fiveware Test: Spring MVC + Ajax + Hibernate + mysql</a>
 		</div>
 	</div>
 </nav>
@@ -30,7 +30,7 @@
 <div class="container" style="min-height: 500px">
 
 	<div class="starter-template">
-		<h1>Search Form</h1>
+		<h1>Data Form</h1>
 		<br>
 
 		<div id="feedback"></div>
@@ -42,12 +42,57 @@
 					<input type=text class="form-control" id="username">
 				</div>
 			</div>
-			<div class="form-group form-group-lg">
+			<div class="form-group form-group-lg" style="visibility:hidden;display:none">
 				<label class="col-sm-2 control-label">Email</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="email">
 				</div>
 			</div>
+			<div class="form-group form-group-lg">
+				<label class="col-sm-2 control-label">Houses</label>
+				<div class="col-sm-10">
+						<select class="form-control" id="houses">
+						  <option>1</option>
+						  <option>2</option>
+						  <option>3</option>
+						  <option>4</option>
+						  <option>5</option>
+						</select>
+				</div>
+			</div>
+
+			<div class="form-group form-group-lg">
+				<label class="col-sm-2 control-label"></label>
+				<div class="col-sm-10">
+					<input type="checkbox" id="vehicle" value="Bike"> I have a bike
+				</div>
+			</div>
+			<div class="form-group form-group-lg">
+				<label class="col-sm-2 control-label"></label>
+				<div class="col-sm-10">
+<div class="radio">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+    Option one is this and that&mdash;be sure to include why it's great
+  </label>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+    Option two can be something else and selecting it will deselect option one
+  </label>
+</div>
+<div class="radio disabled">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+    Option three is disabled
+  </label>
+</div>
+
+				</div>
+			</div>
+
+
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
@@ -64,7 +109,6 @@
 <div class="container">
 	<footer>
 		<p>
-			&copy; <a href="http://www.mkyong.com">Mkyong.com</a> 2015
 		</p>
 	</footer>
 </div>
