@@ -4,6 +4,33 @@ public class SearchCriteria {
 
 	String username;
 	String email;
+	String bike;
+	String houses;
+	String option;
+
+	public String getBike() {
+		return bike;
+	}
+
+	public void setBike(String bike) {
+		this.bike = bike;
+	}
+	
+	public String getHouses() {
+		return houses;
+	}
+
+	public void setHouses(String houses) {
+		this.houses = houses;
+	}
+
+	public String getOption() {
+		return option;
+	}
+
+	public void setOption(String option) {
+		this.option = option;
+	}
 
 	public String getUsername() {
 		return username;
@@ -23,7 +50,7 @@ public class SearchCriteria {
 
 	@Override
 	public String toString() {
-		return "SearchCriteria [username=" + username + ", email=" + email + "]";
+		return "SearchCriteria [username=" + username + ", email=" + email + ", bike=" + bike + "]";
 	}
 
 }

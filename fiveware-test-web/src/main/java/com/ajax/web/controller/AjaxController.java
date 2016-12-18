@@ -16,8 +16,12 @@ import com.ajax.web.model.AjaxResponseBody;
 import com.ajax.web.model.SearchCriteria;
 import com.ajax.web.model.User;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @RestController
 public class AjaxController {
+	private static final Logger logger=LoggerFactory.getLogger(AjaxController.class);
 
 	List<User> users;
 
@@ -27,6 +31,8 @@ public class AjaxController {
 	@JsonView(Views.Public.class)
 	@RequestMapping(value = "/search/api/getSearchResult")
 	public AjaxResponseBody getSearchResultViaAjax(@RequestBody SearchCriteria search) {
+
+		logger.debug("Search:"+search.getUsername()+" bike:"+search.getBike()+" houses:"+search.getHouses()+" option:"+search.getOption());
 
 		AjaxResponseBody result = new AjaxResponseBody();
 

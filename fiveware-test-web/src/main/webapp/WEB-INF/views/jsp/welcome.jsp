@@ -64,7 +64,7 @@
 			<div class="form-group form-group-lg">
 				<label class="col-sm-2 control-label"></label>
 				<div class="col-sm-10">
-					<input type="checkbox" id="vehicle" value="Bike"> I have a bike
+					<input type="checkbox" id="bike" value="Bike"> I have a bike
 				</div>
 			</div>
 			<div class="form-group form-group-lg">
@@ -72,19 +72,19 @@
 				<div class="col-sm-10">
 <div class="radio">
   <label>
-    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+    <input type="radio" name="option" id="optionsRadios1" value="option1" checked>
     Option one is this and that&mdash;be sure to include why it's great
   </label>
 </div>
 <div class="radio">
   <label>
-    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+    <input type="radio" name="option" id="optionsRadios2" value="option2">
     Option two can be something else and selecting it will deselect option one
   </label>
 </div>
 <div class="radio disabled">
   <label>
-    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+    <input type="radio" name="option" id="optionsRadios3" value="option3" disabled>
     Option three is disabled
   </label>
 </div>
@@ -135,7 +135,11 @@
 		var search = {}
 		search["username"] = $("#username").val();
 		search["email"] = $("#email").val();
+		search["bike"] = $('#bike').is(":checked")?"1":"0";
+		search["option"] = $('input[name=option]:checked', '#search-form').val();
+		search["houses"] = $("#houses").val();
 
+		console.log(JSON.stringify(search));
 		$.ajax({
 			type : "POST",
 			contentType : "application/json",
