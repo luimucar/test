@@ -8,11 +8,15 @@ public class User {
 	@JsonView(Views.Public.class)
 	String username;
 	String password;
-	@JsonView(Views.Public.class)
 	String email;
-	@JsonView(Views.Public.class)
 	String phone;
 	String address;
+	@JsonView(Views.Public.class)
+	String bike;
+	@JsonView(Views.Public.class)
+	String voption;
+	@JsonView(Views.Public.class)
+	String houses;
 
 	public User() {
 	}
@@ -24,6 +28,13 @@ public class User {
 		this.email = email;
 		this.phone = phone;
 		this.address = address;
+	}
+	public User(String username, String bike, String houses, String voption) {
+		super();
+		this.username = username;
+		this.bike = bike;
+		this.houses = houses;
+		this.voption = voption;
 	}
 
 	public String getUsername() {
@@ -66,10 +77,30 @@ public class User {
 		this.address = address;
 	}
 
+	public String getBike() {
+		return bike;
+	}
+
+	public void setBike(String bike) {
+		this.bike = bike;
+	}
+	public String getHouses() {
+		return houses;
+	}
+	public void setHouses(String houses) {
+		this.bike = houses;
+	}
+	public String getVoption() {
+		return voption;
+	}
+	public void setVoption(String voption) {
+		this.voption = voption;
+	}
+	
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", password=" + password + ", email=" + email + ", phone=" + phone
-				+ ", address=" + address + "]";
+				+ ", address=" + address + ", bike="+bike+"]";
 	}
 
 }

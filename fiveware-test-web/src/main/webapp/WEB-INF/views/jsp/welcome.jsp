@@ -27,13 +27,33 @@
 	</div>
 </nav>
 
+<style>
+.loader {
+    border: 6px solid #f3f3f3; /* Light grey */
+    border-top: 6px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    visibility:hidden;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+</style>
+
 <div class="container" style="min-height: 500px">
 
+<div id="spinner" class="loader"></div>
 	<div class="starter-template">
 		<h1>Data Form</h1>
-		<br>
 
-		<div id="feedback"></div>
+		<div id="feedback">
+		<h4>Ajax Response</h4><pre>{}</pre>
+		</div>
 
 		<form class="form-horizontal" id="search-form">
 			<div class="form-group form-group-lg">
@@ -97,7 +117,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" id="bth-search"
-						class="btn btn-primary btn-lg">Search</button>
+						class="btn btn-primary btn-lg">Create</button>
 				</div>
 			</div>
 		</form>
@@ -131,6 +151,7 @@
 	});
 
 	function searchViaAjax() {
+$("#spinner").css("visibility","visible");
 
 		var search = {}
 		search["username"] = $("#username").val();
@@ -168,8 +189,10 @@
 	}
 
 	function display(data) {
+	$("#spinner").css("visibility","hidden");
+	
 		var json = "<h4>Ajax Response</h4><pre>"
-				+ JSON.stringify(data, null, 4) + "</pre>";
+				+ JSON.stringify(data, null, 0) + "</pre>";
 		$('#feedback').html(json);
 	}
 </script>

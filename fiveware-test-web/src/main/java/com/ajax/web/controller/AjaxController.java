@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import model.saveUsuario;
+import org.internal.service.CreateUser;
 
 import com.ajax.web.jsonview.Views;
 import com.ajax.web.model.AjaxResponseBody;
@@ -37,96 +37,32 @@ public class AjaxController {
 
 		logger.debug("Search:"+search.getUsername()+" bike:"+search.getBike()+" houses:"+search.getHouses()+" option:"+search.getOption());
 
-		saveUsuario save = new saveUsuario();
-		save.save(search.getUsername(),search.getBike(),search.getOption(),search.getHouses());
+		CreateUser service = new CreateUser();
+		String res= service.create(search.getUsername(),search.getBike(),search.getOption(),search.getHouses());
 		
 		AjaxResponseBody result = new AjaxResponseBody();
 
-		if (isValidSearchCriteria(search)) {
-			List<User> users = findByUserNameOrEmail(search.getUsername(), search.getEmail());
+		if(res.equals("OK")){
+			result.setCode(res);
+			result.setMsg("User created in db.");
+			users = new ArrayList<User>();
 
-			if (users.size() > 0) {
-				result.setCode("200");
-				result.setMsg("");
-				result.setResult(users);
-			} else {
-				result.setCode("204");
-				result.setMsg("No user!");
-			}
-
-		} else {
-			result.setCode("400");
-			result.setMsg("Search criteria is empty!");
+			User user1 = new User(search.getUsername(), search.getBike(), search.getHouses(), search.getOption());
+			users.add(user1);
+			result.setResult(users);
+			
+		}else {
+			result.setCode(res);
+			result.setMsg("Error when updating db!");
+			
+			
 		}
-
+		
 		//AjaxResponseBody will be converted into json format and send back to client.
 		return result;
 
 	}
 
-	private boolean isValidSearchCriteria(SearchCriteria search) {
 
-		boolean valid = true;
 
-		if (search == null) {
-			valid = false;
-		}
-
-		if ((StringUtils.isEmpty(search.getUsername())) && (StringUtils.isEmpty(search.getEmail()))) {
-			valid = false;
-		}
-
-		return valid;
-	}
-
-	// Init some users for testing
-	@PostConstruct
-	private void iniDataForTesting() {
-		users = new ArrayList<User>();
-
-		User user1 = new User("mkyong", "pass123", "mkyong@yahoo.com", "012-1234567", "address 123");
-		User user2 = new User("yflow", "pass456", "yflow@yahoo.com", "016-7654321", "address 456");
-		User user3 = new User("laplap", "pass789", "mkyong@yahoo.com", "012-111111", "address 789");
-		users.add(user1);
-		users.add(user2);
-		users.add(user3);
-
-	}
-
-	// Simulate the search function
-	private List<User> findByUserNameOrEmail(String username, String email) {
-
-		List<User> result = new ArrayList<User>();
-
-		for (User user : users) {
-
-			if ((!StringUtils.isEmpty(username)) && (!StringUtils.isEmpty(email))) {
-
-				if (username.equals(user.getUsername()) && email.equals(user.getEmail())) {
-					result.add(user);
-					continue;
-				} else {
-					continue;
-				}
-
-			}
-			if (!StringUtils.isEmpty(username)) {
-				if (username.equals(user.getUsername())) {
-					result.add(user);
-					continue;
-				}
-			}
-
-			if (!StringUtils.isEmpty(email)) {
-				if (email.equals(user.getEmail())) {
-					result.add(user);
-					continue;
-				}
-			}
-
-		}
-
-		return result;
-
-	}
 }
