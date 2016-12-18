@@ -19,6 +19,8 @@ import com.ajax.web.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import service.saveUsuario;
+
 @RestController
 public class AjaxController {
 	private static final Logger logger=LoggerFactory.getLogger(AjaxController.class);
@@ -34,6 +36,9 @@ public class AjaxController {
 
 		logger.debug("Search:"+search.getUsername()+" bike:"+search.getBike()+" houses:"+search.getHouses()+" option:"+search.getOption());
 
+		saveUsuario save = new saveUsuario();
+		save.save(search.getUsername(),search.getBike(),search.getOption(),search.getHouses());
+		
 		AjaxResponseBody result = new AjaxResponseBody();
 
 		if (isValidSearchCriteria(search)) {

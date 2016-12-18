@@ -100,7 +100,12 @@
 			<scope>provided</scope>
 		</dependency>
 		
-
+   <dependency>
+      <groupId>org.fiveware</groupId>
+      <artifactId>fiveware-test-model</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
 	</dependencies>
 	
 	    <build>
